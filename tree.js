@@ -32,7 +32,21 @@ class Tree {
 
   /** countEvens(): count all of the nodes in the tree with even values. */
 
-  countEvens() {}
+  countEvens() {
+    let count = 0
+    const nodes = [this.root]
+    while(nodes.length){
+      let currentVal = nodes.pop()
+      if(currentVal === null) break
+      if(currentVal.val % 2 === 0){
+        count += 1
+      }
+      for(let child of currentVal.children){
+        nodes.push(child)
+      }
+    }
+    return count
+  }
 
   /** numGreater(lowerBound): return a count of the number of nodes
    * whose value is greater than lowerBound. */
