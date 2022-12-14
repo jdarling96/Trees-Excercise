@@ -61,7 +61,7 @@ class Tree {
         count += 1
       }
       for(let child of currentVal.children){
-        nodes.unshift(child)
+        nodes.push(child)
       }
     }
     return count
