@@ -82,7 +82,23 @@ class BinaryTree {
   /** nextLarger(lowerBound): return the smallest value in the tree
    * which is larger than lowerBound. Return null if no such value exists. */
 
-  nextLarger(lowerBound) {}
+  nextLarger(lowerBound) {
+    let queue = [this.root]
+    if(this.root === null) return null
+    let checkVal = this.root.val
+    while(queue.length){
+      let current = queue.shift()
+      if(current.val > lowerBound){
+        if(current.val < checkVal ){
+          checkVal = current.val
+        }
+      }
+      if(current.left) queue.push(current.left)
+      if(current.right) queue.push(current.right)
+    }
+    if(lowerBound === checkVal) return null
+    return checkVal
+  }
 
   /** Further study!
    * areCousins(node1, node2): determine whether two nodes are cousins
